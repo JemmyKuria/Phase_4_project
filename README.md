@@ -144,8 +144,53 @@ This section focuses on transforming the raw tweet text into a form suitable for
 - A `TfidfVectorizer` was applied to the tokenised text:
   - Included unigrams and bigrams.
   - Limited the vocabulary size to the top 10,000 features using the `max_features` parameter.
+
+
   - Upon calculating the mutual information score for this n-grams, using `mutual_info_classif`, found bigrams weren't impactful for sentiment classification
   - Set the final vectoriser to only include unigrams and select the top 10,000 features
 - This vectorisation step was encapsulated within a pipeline for ease of reuse during model training.
 
 The final output of this section was a cleaned and vectorised dataset, ready for modelling.
+
+
+
+#MODELLING.
+
+We chose the XGBoost model for sentiment classification due to its strong and balanced performance across both classes. After performing a comprehensive hyperparameter tuning using GridSearchCV with 5-fold cross-validation over 72 parameter combinations, the model achieved an overall accuracy of 92% on the test set.
+
+More importantly, the f1-scores for both classes were high and balanced:
+
+    Class 0 (Negative): f1-score = 0.92
+
+    Class 1 (Positive): f1-score = 0.92
+
+    Macro Avg f1-score: 0.92
+
+This indicates that the model is neither biased toward a single class nor overfitting, and handles class distinctions well. These results demonstrate that XGBoost is both accurate and reliable, making it a strong choice for this sentiment classification task.
+
+
+
+#CONCLUSION.
+
+In this project, we successfully built a sentiment classification pipeline for tweets related to products and brands using Natural Language Processing (NLP) techniques. Starting from raw, noisy social media data, we performed comprehensive data cleaning, exploratory data analysis (EDA), class balancing, and text preprocessing, including stopword removal and stemming.
+
+The best-performing model will be selected for saving and future deployment, where it can be used to automatically analyze incoming tweets in real time. This solution enables businesses to monitor customer sentiment about their products on social media platforms, offering actionable insights for marketing, product development, and customer service strategies.
+
+Overall, the project demonstrates the practical power of NLP and machine learning in solving real-world problems related to brand percept.
+
+
+
+Future Work
+Model Deployment (Planned)
+Package the best-performing model and deploy it as an API using FastAPI, allowing real-time tweet sentiment predictions.
+
+Use Deep Learning Models
+Explore advanced models like LSTM or transformers (e.g., BERT) to potentially improve classification performance, especially on complex or nuanced tweets.
+
+Expand the Dataset
+Collect or integrate more labeled tweets to improve generalization and robustness, especially for underrepresented sentiment classes.
+Aspect-Based Sentiment Analysis
+Move beyond overall sentiment and analyze which specific product or brand feature the sentiment is directed toward.
+
+
+
