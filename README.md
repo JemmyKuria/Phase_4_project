@@ -120,3 +120,32 @@ Longer emotional tweets may be more prevalent for certain brands.
 ![alt text](Images/image_7.png)
 
 Expect very high correlation (~0.9).
+
+# Feature Engineering
+
+This section focuses on transforming the raw tweet text into a form suitable for machine learning models.
+
+#### Sentiment Simplification
+- The original `sentiment` labels were filtered to three categories:
+  - Positive emotion
+  - Negative emotion
+  - No emotion
+- Tweets labelled as "I can't tell" were excluded due to ambiguity and minimal representation.
+
+#### Stopword Removal and Lemmatisation
+- English stopwords were removed to reduce noise.
+- Tokens were stemmed using `PorterStemmer` to standardise word forms (e.g., "running" → "run").
+
+#### Feature Construction
+- A new `tokens` column was added to the dataset to store the cleaned and processed word lists.
+- This column formed the basis for vectorisation in the modelling phase.
+
+#### TF-IDF Vectorisation Pipeline
+- A `TfidfVectorizer` was applied to the tokenised text:
+  - Included unigrams and bigrams.
+  - Limited the vocabulary size to the top 10,000 features using the `max_features` parameter.
+  - Upon calculating the mutual information score for this n-grams, using `mutual_info_classif`, found bigrams weren't impactful for sentiment classification
+  - Set the final vectoriser to only include unigrams and select the top 10,000 features
+- This vectorisation step was encapsulated within a pipeline for ease of reuse during model training.
+
+The final output of this section was a cleaned and vectorised dataset, ready for modelling.
