@@ -154,7 +154,7 @@ The final output of this section was a cleaned and vectorised dataset, ready for
 
 
 
-#MODELLING.
+# MODELLING.
 
 We chose the XGBoost model for sentiment classification due to its strong and balanced performance across both classes. After performing a comprehensive hyperparameter tuning using GridSearchCV with 5-fold cross-validation over 72 parameter combinations, the model achieved an overall accuracy of 92% on the test set.
 
@@ -170,7 +170,7 @@ This indicates that the model is neither biased toward a single class nor overfi
 
 
 
-#CONCLUSION.
+# CONCLUSION.
 
 In this project, we successfully built a sentiment classification pipeline for tweets related to products and brands using Natural Language Processing (NLP) techniques. Starting from raw, noisy social media data, we performed comprehensive data cleaning, exploratory data analysis (EDA), class balancing, and text preprocessing, including stopword removal and stemming.
 
@@ -180,7 +180,7 @@ Overall, the project demonstrates the practical power of NLP and machine learnin
 
 
 
-Future Work
+# Future Work
 Model Deployment (Planned)
 Package the best-performing model and deploy it as an API using FastAPI, allowing real-time tweet sentiment predictions.
 
